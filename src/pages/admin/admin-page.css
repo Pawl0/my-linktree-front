@@ -1,0 +1,53 @@
+.new_link {
+	display: flex;
+	gap: 16px;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin-bottom: 32px;
+	background-color: darkgray;
+	padding: 8px 0px;
+	border-radius: 15px;
+	@media (max-width: 600px) {
+		width: 300px;
+	}
+
+	@media (min-width: 601px) and (max-width: 1024px) {
+		width: 500px;
+	}
+
+	@media (min-width: 1025px) {
+		width: 800px;
+	}
+}
+
+.edit_link {
+	display: flex;
+	flex-direction: column;
+	background-color: darkgray;
+	border-radius: 15px;
+	gap: 16px;
+
+	@media (max-width: 600px) {
+		width: 300px;
+	}
+
+	@media (min-width: 601px) and (max-width: 1024px) {
+		width: 500px;
+	}
+
+	@media (min-width: 1025px) {
+		width: 800px;
+	}
+}
+
+.edit_link_inputs {
+	margin-top: 16px;
+}
+
+.edit_link_inputs,
+.edit_buttons {
+	display: flex;
+	justify-content: center;
+	gap: 16px;
+	margin-bottom: 16px;
+}
