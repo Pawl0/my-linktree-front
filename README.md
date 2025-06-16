@@ -1,54 +1,82 @@
-# React + TypeScript + Vite
+# My-LinkTree
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A linktree project made with React, Vite, Typescript and
+SWC.
 
-Currently, two official plugins are available:
+## Summary of implemented features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> Basic Authentication using JWT and localStorage
+>
+> Basic CRUD of users and links useSWR and fetch
+>
+> Basic validation using alert and react.toastify
+>
+> Basic styling in CSS
+>
+> Basic redirects with window.location.href
 
-## Expanding the ESLint configuration
+## Scope decisions and key trade-offs
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Vite and SWC
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+I've decided to use these technologies because they are the
+most modern and performant right now for React. In addition
+to this I used them to be possible to code in my Macbook Air
+that is very old and would freeze a lot otherwise.
+
+### JWT and Localstorage
+
+I chose to store the JWT in Localstorage for simplicity. One
+better and safer way would be using http only cookies but I
+had some trouble with them in the past and would probably
+need more time to use this approach.
+
+### Styling with CSS only
+
+For simplicity I decided to use only CSS instead of
+libraries such as Tailwind for example. Another good option
+would be Styled Components but the lib is already
+deprecated.
+
+### Redirects with window.location.href
+
+This approach is easy but not very elegant. With more time I
+would choose to use react router navigation. This would
+enable a smoother navigation experience.
+
+### SWR
+
+This library helped me avoid doing requests inside of
+useEffects and made my code cleaner. Another option would be
+React Query that is also well known by the React community.
+Other advantage of SWR is the automatic cache it creates in
+the frontend and the possibility of optimistic mutations as
+well as only refetch when making changes.
+
+#### Tests and Documentation
+
+Due to time constraints automated tests and components
+documentation weren't implemented in this project. With more
+time I could create unit tests with Jest and React Testing
+Library and document the components with storybook.
+
+## Setup and run instructions
+
+### Project setup
+
+```bash
+$ pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Compile and run the project
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# development
+$ pnpm run dev
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+# build
+$ pnpm run build
+
+# production mode
+$ pnpm run start
 ```
